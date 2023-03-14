@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useLayoutEffect } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { Text, View, Image, TextInput, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Categories from "../components/Categories";
@@ -10,9 +10,19 @@ import {
   AdjustmentsVerticalIcon,
 } from "react-native-heroicons/outline";
 import FeatureRow from "../components/FeatureRow";
+import { getAllFeatures, getAllFeaturesUrl } from "../Hooks/getAllFeatures";
+
 
 const HomeScreen = () => {
   const navigation = useNavigation();
+  const [featuredCategories, setFeaturedCategories] = useState([]);
+
+  useEffect(() => {
+    getAllFeatures()
+    .then(({ result }) => {
+      setFeaturedCategories(result)
+    })
+  }, []);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -62,7 +72,17 @@ const HomeScreen = () => {
         {/* Categories */}
         <Categories />
         {/* Featured Rows */}
-        <FeatureRow
+
+        {featuredCategories?.map((item) => (
+          <FeatureRow
+            key={item?._id}
+            id={item?._id}
+            title={item?.name}
+            desc={item?.short_desc}
+          />
+        ))}
+
+        {/* <FeatureRow
           id="1"
           title="Featured"
           desc="Paid placements from our partners!"
@@ -76,7 +96,7 @@ const HomeScreen = () => {
           id="3"
           title="Offers near you!"
           desc="Why not support your local restaurant tonight!"
-        />
+        /> */}
       </ScrollView>
     </SafeAreaView>
   );

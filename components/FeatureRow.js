@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ScrollView, Text, View } from "react-native";
 import { ArrowRightIcon } from "react-native-heroicons/outline";
 import RestaurantCard from "./RestaurantCard";
+import { getRestaurantsByFeatureId } from "../Hooks/getRestaurantsByFeatureId";
 
 const FeatureRow = ({ id, title, desc }) => {
+  const [restaurants, setRestaurants] = useState([]);
+
+  useEffect(() => {
+    getRestaurantsByFeatureId(id).then(({result}) => {
+      setRestaurants(result?.restaurants);
+    });
+  }, []);
+  
+  console.log(restaurants[0])
+
   return (
     <View>
       <View className="mt-4 flex-row items-center justify-between px-4">
@@ -21,7 +32,22 @@ const FeatureRow = ({ id, title, desc }) => {
         className="pt-4"
       >
         {/* RestCards */}
-        <RestaurantCard 
+        {restaurants?.map((item) => (
+          <RestaurantCard
+            key={item._id}
+            id={item._id}
+            imgUrl={item?.image}
+            title={item?.name}
+            rating={item?.rating}
+            genre={item?.category?.name}
+            address={item?.address}
+            short_desc={item?.short_desc}
+            dishes={item?.dishes}
+            long={item?.lat}
+            lat={item?.lon}
+          />
+        ))}
+        {/* <RestaurantCard 
             id="1"
             imgUrl="https://links.papareact.com/gn7"
             title="Yo! Sushi"
@@ -56,7 +82,7 @@ const FeatureRow = ({ id, title, desc }) => {
             dishes={[]}
             long={20}
             lat={0}
-        />
+        /> */}
       </ScrollView>
     </View>
   );

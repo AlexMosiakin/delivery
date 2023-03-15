@@ -1,27 +1,27 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useLayoutEffect, useState } from "react";
-import { Text, View, Image, TextInput, ScrollView } from "react-native";
+import { Text, View, Image, TextInput, ScrollView, ScrollViewBase } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Categories from "../components/Categories";
+
 import {
   UserIcon,
   ChevronDownIcon,
   MagnifyingGlassIcon,
   AdjustmentsVerticalIcon,
 } from "react-native-heroicons/outline";
-import FeatureRow from "../components/FeatureRow";
-import { getAllFeatures, getAllFeaturesUrl } from "../Hooks/getAllFeatures";
 
+import { getAllFeatures } from "../Hooks/getAllFeatures";
+import Categories from "../Components/Categories";
+import FeatureRow from "../Components/FeatureRow";
 
 const HomeScreen = () => {
   const navigation = useNavigation();
   const [featuredCategories, setFeaturedCategories] = useState([]);
 
   useEffect(() => {
-    getAllFeatures()
-    .then(({ result }) => {
-      setFeaturedCategories(result)
-    })
+    getAllFeatures().then(({ result }) => {
+      setFeaturedCategories(result);
+    });
   }, []);
 
   useLayoutEffect(() => {
@@ -31,7 +31,7 @@ const HomeScreen = () => {
   }, []);
 
   return (
-    <SafeAreaView className="bg-white pt-5">
+    <SafeAreaView className="bg-white pt-5" style={{flex: 1}}>
       {/* Header */}
       <View className="flex-row pb-3 items-center mx-4 space-x-2">
         <View>
@@ -67,7 +67,7 @@ const HomeScreen = () => {
         <AdjustmentsVerticalIcon color="#00CCBB" />
       </View>
 
-      {/* Search */}
+      {/* Features */}
       <ScrollView className="bg-gray-100">
         {/* Categories */}
         <Categories />

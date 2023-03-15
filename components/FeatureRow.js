@@ -12,8 +12,8 @@ const FeatureRow = ({ id, title, desc }) => {
       setRestaurants(result?.restaurants);
     });
   }, []);
-  
-  console.log(restaurants[0])
+
+  console.log(restaurants)
 
   return (
     <View>
@@ -39,7 +39,7 @@ const FeatureRow = ({ id, title, desc }) => {
             imgUrl={item?.image}
             title={item?.name}
             rating={item?.rating}
-            genre={item?.category?.name}
+            category={item?.category?.name}
             address={item?.address}
             short_desc={item?.short_desc}
             dishes={item?.dishes}

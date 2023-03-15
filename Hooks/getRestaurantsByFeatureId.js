@@ -7,10 +7,13 @@ export const getRestaurantsByFeatureId = (id) => {
       restaurants[]->{
         ...,
         'image': image.asset->url,
-        dishes[]->,
-          category[0]->{
-            name
-          }
+        dishes[]->{
+          ...,
+          'image': image.asset->url,
+        },
+        category[0]->{
+          name,
+        },
       }
     }[0]`
   );

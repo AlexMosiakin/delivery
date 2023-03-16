@@ -17,7 +17,7 @@ export default {
     },
     {
       name: 'price',
-      type: 'string',
+      type: 'number',
       title: 'Price of the dish in GBP',
     },
     {

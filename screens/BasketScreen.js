@@ -1,7 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useMemo, useState } from "react";
 import {
-  SafeAreaView,
   View,
   Text,
   TouchableOpacity,
@@ -16,6 +15,7 @@ import {
   selectBasketTotal,
 } from "./../features/basketSlice";
 import { XCircleIcon } from "react-native-heroicons/solid";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const BasketScreen = () => {
   const navigation = useNavigation();

@@ -1,12 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useMemo, useState } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Image,
-  ScrollView,
-} from "react-native";
+import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { selectRestaurant } from "../features/restaurantSlice";
 import {
@@ -34,8 +28,6 @@ const BasketScreen = () => {
 
     setGroupedBasketItems(groupedItems);
   }, [basketItems]);
-
-  console.log(groupedBasketItems);
 
   return (
     <SafeAreaView className="flex-1 bg-white">
@@ -113,9 +105,12 @@ const BasketScreen = () => {
           </View>
 
           <TouchableOpacity
+            onPress={() => navigation.navigate("PreparingOrderScreen")}
             className="rounded-lg bg-[#00CCBB] p-4"
           >
-            <Text className="text-center text-white text-lg font-bold">Place order</Text>
+            <Text className="text-center text-white text-lg font-bold">
+              Place order
+            </Text>
           </TouchableOpacity>
         </View>
       </View>

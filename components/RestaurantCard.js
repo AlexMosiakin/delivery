@@ -13,7 +13,7 @@ const RestaurantCard = ({
   address,
   short_desc,
   dishes,
-  long,
+  lon,
   lat,
 }) => {
   const navigation = useNavigation()
@@ -28,7 +28,7 @@ const RestaurantCard = ({
         address,
         short_desc,
         dishes,
-        long,
+        lon,
         lat,
       })
     }}>

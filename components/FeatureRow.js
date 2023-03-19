@@ -41,8 +41,8 @@ const FeatureRow = ({ id, title, desc }) => {
             address={item?.address}
             short_desc={item?.short_desc}
             dishes={item?.dishes}
-            long={item?.lat}
-            lat={item?.lon}
+            lon={item?.lon}
+            lat={item?.lat}
           />
         ))}
         {/* <RestaurantCard 
@@ -54,7 +54,7 @@ const FeatureRow = ({ id, title, desc }) => {
             address="123 Main St"
             short_desc="This is a Japanese restaurant"
             dishes={[]}
-            long={20}
+            lon={20}
             lat={0}
         />
         <RestaurantCard 
@@ -66,7 +66,7 @@ const FeatureRow = ({ id, title, desc }) => {
             address="123 Main St"
             short_desc="This is a Japanese restaurant"
             dishes={[]}
-            long={20}
+            lon={20}
             lat={0}
         />
         <RestaurantCard 
@@ -78,7 +78,7 @@ const FeatureRow = ({ id, title, desc }) => {
             address="123 Main St"
             short_desc="This is a Japanese restaurant"
             dishes={[]}
-            long={20}
+            lon={20}
             lat={0}
         /> */}
       </ScrollView>

@@ -30,7 +30,7 @@ const RestaurantScreen = () => {
       address,
       short_desc,
       dishes,
-      long,
+      lon,
       lat,
     },
   } = useRoute();
@@ -45,7 +45,7 @@ const RestaurantScreen = () => {
       address,
       short_desc,
       dishes,
-      long,
+      lon,
       lat,
     }))
   }, []);
